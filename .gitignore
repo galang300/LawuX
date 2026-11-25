@@ -1,0 +1,35 @@
+# Dependensi
+node_modules/
+
+# Rahasia & konfigurasi lokal
+.env
+.env.*
+!.env.example
+
+# Data runtime
+data/
+uploads/
+*.db
+*.db-shm
+*.db-wal
+tests/results/
+
+# Dokumen internal (tidak dipublikasikan)
+docs/
+*.pdf
+!tests/fixtures/*.pdf
+PROMPTS.md
+
+# File Claude Code / asisten AI
+.claude/
+CLAUDE.md
+CLAUDE.local.md
+
+# Log & sistem
+npm-debug.log*
+*.log
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

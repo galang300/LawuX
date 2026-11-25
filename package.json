@@ -1,0 +1,39 @@
+{
+  "name": "rujuk",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mikroblog untuk diskusi ilmiah: setiap tweet & retweet wajib melampirkan sumber (PDF/link) yang diverifikasi dengan RAG OpenAI.",
+  "keywords": [
+    "microblog",
+    "rag",
+    "openai",
+    "fact-checking",
+    "academic",
+    "citation",
+    "express",
+    "sqlite"
+  ],
+  "license": "MIT",
+  "main": "server/index.js",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "test": "node --test --test-concurrency=1 tests/error-cases.test.js tests/features.test.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "better-sqlite3": "^13.2.0",
+    "cheerio": "^1.2.0",
+    "cookie-parser": "^1.4.7",
+    "express": "^4.22.3",
+    "express-rate-limit": "^8.7.5",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.5.0",
+    "openai": "^7.60.0",
+    "unpdf": "^1.9.1"
+  }
+}

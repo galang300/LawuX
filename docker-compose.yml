@@ -1,0 +1,32 @@
+name: rujuk
+
+services:
+  app:
+    build: .
+    image: rujuk:latest
+    env_file: .env
+    # Nilai di bawah menimpa isi .env agar path & mode di dalam container selalu benar.
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+      DB_PATH: /data/rujuk.db
+      UPLOAD_DIR: /uploads
+      ALLOW_PRIVATE_URLS: "false"
+    ports:
+      - "3000:3000"
+    volumes:
+      - rujuk-data:/data        # SQLite (+ file WAL) — named volume, BUKAN bind-mount ke folder Windows
+      - rujuk-uploads:/uploads  # PDF yang diunggah
+    restart: unless-stopped
+    # Hardening: filesystem read-only kecuali volume & /tmp, tanpa capability Linux, tanpa eskalasi hak.
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+
+volumes:
+  rujuk-data:
+  rujuk-uploads:
